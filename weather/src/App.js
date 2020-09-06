@@ -18,13 +18,14 @@ function App() {
     const cityInput = e.target.elements.cityInput.value;
     const countryInput = e.target.elements.countryInput.value;
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityInput},${countryInput}&appid=${API_KEY}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${cityInput},${countryInput}&appid=${secrets.API_KEY}&units=imperial`
     );
     const weather_data = await api_call.json();
 
     setCity(cityInput);
     setCountry(countryInput);
     setConditions(weather_data);
+    setTemp(weather_data);
     console.log(weather_data);
   }
 
